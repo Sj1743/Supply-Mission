@@ -2,6 +2,7 @@
 var helicopterIMG, helicopterSprite;
 var packageSprite,packageIMG, packageBody;
 var groundSprite;
+var boxLeft, boxRight, boxBottom;
 
 //declare constants
 const Engine = Matter.Engine;
@@ -40,7 +41,7 @@ function setup() {
 	world = engine.world;
 
 	//create circular body 'packageBody', add to World world
-	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0.5, isStatic:true});
+	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0, isStatic:true});
 	World.add(world, packageBody);
 
 	
@@ -48,6 +49,22 @@ function setup() {
 	ground = Bodies.rectangle(width/2, 650, width, 10 , {isStatic:true} );
 	World.add(world, ground);
 	 
+	//create 'box' using three rectangular bodies
+	boxBottom = Bodies.rectangle(400, 630, 200, 20, {isStatic:true});
+	World.add(world, boxBottom);
+	boxLeft = Bodies.rectangle(310, 590, 20, 100, {isStatic:true});
+	World.add(world, boxLeft);
+	boxRight = Bodies.rectangle(490, 590, 20, 100, {isStatic:true});
+	World.add(world, boxRight);
+
+	//create sprites for 'box'
+	boxBottomBody = createSprite(400, 650, 200, 20);
+	boxBottomBody.shapeColor = "red";
+	boxLeftBody = createSprite(310, 590, 20, 100);
+	boxLeftBody.shapeColor = "red";
+	boxRightBody = createSprite(490, 590, 20, 100);
+	boxRightBody.shapeColor = "red";
+
 	//run Engine engine
 	Engine.run(engine);
   
