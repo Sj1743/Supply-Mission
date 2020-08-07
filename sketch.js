@@ -82,9 +82,6 @@ function draw() {
 	packageSprite.x= packageBody.position.x 
 	packageSprite.y= packageBody.position.y 
 
-	//drop package when down arrow pressed
-	keyPressed();
-
 	//draw all sprites
 	drawSprites();
  
